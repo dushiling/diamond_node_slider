@@ -1,0 +1,25 @@
+name: diamond_node_slider
+description: The node is a diamond slider, which can achieve two effects with transition value and no transition value. A bubble displays its value, and the node text can not be displayed. The node can also be circular..
+version: 0.0.1
+homepage: https://github.com/dushiling
+repository: https://github.com/dushiling/diamond_node_slider
+
+environment:
+  sdk: ">=2.17.0 <3.0.0"
+  flutter: ">=1.17.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+
+
+flutter:
+  uses-material-design: true
+
+
+
