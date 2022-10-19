@@ -235,7 +235,7 @@ class _DiamondNodeSlisderState extends State<DiamondNodeSlisder> {
   void setValue(bool isEnd,bool bubbleShow) {
     //更新value值
     setState(() {
-      value = dx/maxX;;//0-1
+      value = dx/maxX;//0-1
 
 
       if(widget.toNodeBool){
@@ -347,7 +347,6 @@ class SliderPainter2 extends CustomPainter {
   @override
   void paint(Canvas canvas2, Size size) {
     double width =  size.width;
-    double height =  size.height;
 
 
     //画文字
