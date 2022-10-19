@@ -1,5 +1,5 @@
-## 0.0.1+7
+## 1.0.0
 
-* Example added
+* First specification release
 
 

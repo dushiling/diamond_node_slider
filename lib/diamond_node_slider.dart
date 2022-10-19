@@ -380,6 +380,7 @@ class SliderPainter2 extends CustomPainter {
       String textStr = (minValue > 0 && i == 0)
           ? '${minValue.toStringAsFixed(0)}$textUnitStr'
           : '${((maxValue) / divisions * i).toStringAsFixed(0)}$textUnitStr';
+      debugPrint('textStr===$textStr');
 
       TextPainter textPainter = TextPainter();
       final TextSpan textSpan = TextSpan(
