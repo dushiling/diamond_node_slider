@@ -1,5 +1,5 @@
-## 0.0.1+6
+## 0.0.1+7
 
-* Format the code
+* Example added
 
 

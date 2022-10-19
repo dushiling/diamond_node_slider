@@ -62,8 +62,8 @@ class DiamondNodeSlisder extends StatefulWidget {
 }
 
 class _DiamondNodeSlisderState extends State<DiamondNodeSlisder> {
-  double dx = 0;
-  double maxX = 0;
+  double dx = 0.0;
+  double maxX = 0.0;
 
   double value = 0.0; //0-1
   bool bubbleShowBool = false; //气泡是否显示
@@ -99,7 +99,7 @@ class _DiamondNodeSlisderState extends State<DiamondNodeSlisder> {
                       decoration: BoxDecoration(
                         color: widget.activeTrackColor,
                         borderRadius: BorderRadius.all(
-                          Radius.circular(20),
+                          Radius.circular(20.0),
                         ),
                       ),
                       child: Text(
@@ -124,9 +124,9 @@ class _DiamondNodeSlisderState extends State<DiamondNodeSlisder> {
               decoration: BoxDecoration(color: widget.unActiveTrackColor),
               child: CustomPaint(
                 painter: SliderPainter((double maxDx) {
-                  print('value ===$value'); //0-1的值
-                  print('maxDx ===$maxDx'); //总长度
-                  print('value * maxDx===${value * maxDx}'); //划的长度
+                  debugPrint('value ===$value'); //0-1的值
+                  debugPrint('maxDx ===$maxDx'); //总长度
+                  debugPrint('value * maxDx===${value * maxDx}'); //划的长度
 
                   maxX = maxDx;
                   return value * maxDx;
@@ -158,9 +158,9 @@ class _DiamondNodeSlisderState extends State<DiamondNodeSlisder> {
                     alignment: WrapAlignment.start,
                     crossAxisAlignment: WrapCrossAlignment.start,
                     children: list.map((valueS) {
-                      int currentValue = int.parse(
+                      double currentValue = double.parse(
                           (widget.maxValue! * value).toStringAsFixed(0));
-                      int nodeValue = int.parse(
+                      double nodeValue = double.parse(
                               (widget.maxValue! / widget.divisions)
                                   .toString()) *
                           list.indexOf(valueS);
@@ -182,7 +182,7 @@ class _DiamondNodeSlisderState extends State<DiamondNodeSlisder> {
                               ), // 边色与边宽度q
                               borderRadius: BorderRadius.circular(
                                   widget.isRhombus
-                                      ? 2
+                                      ? 2.0
                                       : widget.nodeWidth / 2), //圆角弧度
                             ),
                             // transform: Matrix4.rotationZ(math.pi /4),
@@ -214,8 +214,9 @@ class _DiamondNodeSlisderState extends State<DiamondNodeSlisder> {
                             ? 1.5
                             : 1, //边框宽度
                       ), // 边色与边宽度
-                      borderRadius: BorderRadius.circular(
-                          widget.isRhombus ? 2 : (widget.nodeWidth + 2.5) / 2),
+                      borderRadius: BorderRadius.circular(widget.isRhombus
+                          ? 2.0
+                          : (widget.nodeWidth + 2.5) / 2.0),
                     ),
                     alignment: Alignment.center,
                   )),
@@ -290,10 +291,9 @@ class _DiamondNodeSlisderState extends State<DiamondNodeSlisder> {
   void gotoNode() {
     int precent =
         int.parse(((dx / maxX) * widget.maxValue!).toStringAsFixed(0));
-
-    double divisionsV = widget.maxValue! / widget.divisions; //100/4/100=0.25
-    print('precent===$precent');
-    print('divisionsV===$divisionsV');
+    double divisionsV = widget.maxValue! / widget.divisions;
+    debugPrint('precent===$precent');
+    debugPrint('divisionsV===$divisionsV');
 
     if (0 < precent && precent <= divisionsV * 1) {
       value = divisionsV * 1 / widget.maxValue!;
@@ -380,7 +380,6 @@ class SliderPainter2 extends CustomPainter {
       String textStr = (minValue > 0 && i == 0)
           ? '${minValue.toStringAsFixed(0)}$textUnitStr'
           : '${((maxValue) / divisions * i).toStringAsFixed(0)}$textUnitStr';
-      print('textStr===$textStr');
 
       TextPainter textPainter = TextPainter();
       final TextSpan textSpan = TextSpan(
