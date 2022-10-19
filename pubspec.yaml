@@ -1,6 +1,6 @@
 name: diamond_node_slider
 description: The node is a diamond slider, which can achieve two effects with transition value and node value.
-version: 0.0.1+4
+version: 0.0.1+5
 homepage: https://github.com/dushiling
 repository: https://github.com/dushiling/diamond_node_slider
 

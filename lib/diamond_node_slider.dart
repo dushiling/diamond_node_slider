@@ -354,7 +354,7 @@ class SliderPainter2 extends CustomPainter {
 
 
       //minValue  如果有最小值，则首位显示最小值  其他 显示节点值   textUnitStr：单位 %、x等
-      String textStr= (minValue>0&&i==0)?'${minValue.toStringAsFixed(0)}${textUnitStr}': '${((maxValue)/divisions * i).toStringAsFixed(0)}${textUnitStr}';
+      String textStr= (minValue>0&&i==0)?'${minValue.toStringAsFixed(0)}$textUnitStr': '${((maxValue)/divisions * i).toStringAsFixed(0)}$textUnitStr';
       print('textStr===${textStr}');
 
 
