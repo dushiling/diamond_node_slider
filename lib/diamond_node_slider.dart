@@ -134,7 +134,7 @@ class _DiamondNodeSlisderState extends State<DiamondNodeSlisder> {
                     children:list.map((valueS) {
 
                       int currentValue= int.parse((widget.maxValue!*value).toStringAsFixed(0));
-                      int nodeValue= (widget.maxValue!/widget.divisions).toInt() * list.indexOf(valueS);
+                      int nodeValue= int.parse((widget.maxValue!/widget.divisions).toString()) * list.indexOf(valueS);
 
                       return  Transform.rotate(angle:math.pi / 4,  child: Container(
                         width:  widget.nodeWidth,

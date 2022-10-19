@@ -1,5 +1,5 @@
-## 0.0.1+2
+## 0.0.1+3
 
-* Fix an imperfect print format
+* 'toInt'change to 'int.parse（）'
 
 
