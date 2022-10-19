@@ -1,6 +1,5 @@
-## 0.0.1+1
+## 0.0.1+2
 
-* 1. The LICENSE file is updated
-* 2. Optimized annotations
-* 3. Deleted unnecessary header files
+* Fix an imperfect print format
+
 

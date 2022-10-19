@@ -106,8 +106,8 @@ class _DiamondNodeSlisderState extends State<DiamondNodeSlisder> {
               decoration:  BoxDecoration(color: widget.unActiveTrackColor),
               child: CustomPaint(
                 painter: SliderPainter((double maxDx) {
-                  print('value ===${value}');//0-1的值
-                  print('maxDx ===${maxDx}');//总长度
+                  print('value ===$value');//0-1的值
+                  print('maxDx ===$maxDx');//总长度
                   print('value * maxDx===${value * maxDx}');//划的长度
 
                   maxX = maxDx;
