@@ -1,29 +1,40 @@
 library diamond_node_slider;
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'dart:math' as math;
 
 class DiamondNodeSlisder extends StatefulWidget {
 
-  final double width;//长度
-  final double height;//高度
+  /// Width of the slider.
+  final double width;
+  /// Height of the slider.
+  final double height;
+  /// maxValue of the slider.At the end of the value
+  final int? maxValue;
+  /// minValue of the slider.At the start of the value，the default is 0
+  final int? minValue;
 
-  final int? maxValue;//最大值
-  final int? minValue;//最小值
-
+  /// The number of sections of the slider.
   final int divisions;//段数
 
-  final Color?  unActiveTrackColor;//不活跃颜色
-  final Color?  activeTrackColor;//活跃颜色
+  /// The default color of the slider.
+  final Color?  unActiveTrackColor;
+  /// The active color of the slider.
+  final Color?  activeTrackColor;
 
-  final String textUnitStr;//文字单位：%、x等
-  final bool textShowBool;//是否显示节点下的文字
+  /// Node text unit. ex：%、x
+  final String textUnitStr;
+  ///Whether to display text under the node
+  final bool textShowBool;
 
-  final double nodeWidth;//节点宽高
-  final bool isRhombus;//true:菱形（默认） false：圆形
-  final bool toNodeBool;//滑动直接跳到节点，无过渡
+  /// The width and height of the node
+  final double nodeWidth;
+  ///Whether the node is a diamond.true: diamond (default)   false: circle
+  final bool isRhombus;
+  ///Drag directly to node without transition
+  final bool toNodeBool;
 
+  ///Returns the value of slider
   final Function(int) valueChanged;
 
 
@@ -70,7 +81,6 @@ class _DiamondNodeSlisderState extends State<DiamondNodeSlisder> {
     return Container(
       height: 50-(widget.textShowBool==false?15:0) ,
       width:  widget.width,
-      // color: Colors.red,
       child:  GestureDetector(
         child: Stack(
           alignment: widget.textShowBool==false?Alignment.bottomCenter:Alignment.center,

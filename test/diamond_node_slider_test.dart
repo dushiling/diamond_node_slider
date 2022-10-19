@@ -29,7 +29,7 @@ class _MyAppState extends State<MyApp> {
 
            ///常用
            DiamondNodeSlisder((value) {
-             print('value===${value}');
+             print('value===$value');
            },
              activeTrackColor: Color(0xFF878E9A),
              unActiveTrackColor: Color(0xFFEBEBEB),
@@ -46,7 +46,7 @@ class _MyAppState extends State<MyApp> {
 
            ///最小值不为0
            DiamondNodeSlisder((value) {
-             print('value===${value}');
+             print('value===$value');
              },
              activeTrackColor: Colors.red,
              unActiveTrackColor: Color(0xFFEBEBEB),
@@ -63,7 +63,7 @@ class _MyAppState extends State<MyApp> {
 
            ///节点文字不显示
            DiamondNodeSlisder((value) {
-               print('value===${value}');
+               print('value===$value');
            },
              activeTrackColor: Colors.blue,
              unActiveTrackColor: Color(0xFFEBEBEB),
@@ -79,7 +79,7 @@ class _MyAppState extends State<MyApp> {
 
            ///节点圆形、设置轨道高度
            DiamondNodeSlisder((value) {
-             print('value===${value}');
+             print('value===$value');
            },
              activeTrackColor: Colors.orange,
              unActiveTrackColor: Color(0xFFEBEBEB),
@@ -95,7 +95,7 @@ class _MyAppState extends State<MyApp> {
 
            ///直接跳到节点，无过渡
            DiamondNodeSlisder((value) {
-             print('value===${value}');
+             print('value===$value');
            },
              activeTrackColor:  Colors.green,
              unActiveTrackColor: Color(0xFFEBEBEB),
