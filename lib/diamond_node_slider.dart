@@ -40,22 +40,27 @@ class DiamondNodeSlisder extends StatefulWidget {
   ///Drag directly to node without transition
   final bool toNodeBool;
 
-  ///Returns the value of slider
-  final Function(int) valueChanged;
+  ///range:0-1,  Initial value/ maxValue
+  final double? ratioValue;
 
-  DiamondNodeSlisder(this.valueChanged,
-      {this.width = double.infinity,
-      this.height = 2.5,
-      this.unActiveTrackColor = const Color(0xFFEBEBEB),
-      this.activeTrackColor = const Color(0xFF878E9A),
-      this.divisions = 4,
-      this.maxValue,
-      this.minValue = 0,
-      this.textUnitStr = '',
-      this.textShowBool = true,
-      this.isRhombus = true,
-      this.nodeWidth = 10,
-      this.toNodeBool = false});
+  ///Returns the value of slider
+  final Function(int, double) valueChanged;
+
+  DiamondNodeSlisder(
+      {required this.valueChanged,
+        this.width = double.infinity,
+        this.height = 2.5,
+        this.unActiveTrackColor = const Color(0xFFEBEBEB),
+        this.activeTrackColor = const Color(0xFF878E9A),
+        this.divisions = 4,
+        this.maxValue,
+        this.minValue = 0,
+        this.textUnitStr = '',
+        this.textShowBool = true,
+        this.isRhombus = true,
+        this.nodeWidth = 10,
+        this.toNodeBool = false,
+        this.ratioValue});
 
   @override
   State<DiamondNodeSlisder> createState() => _DiamondNodeSlisderState();
@@ -80,6 +85,10 @@ class _DiamondNodeSlisderState extends State<DiamondNodeSlisder> {
 
   @override
   Widget build(BuildContext context) {
+    if (widget.ratioValue != null) {
+      value = widget.ratioValue!;
+    }
+
     return Container(
       height: 50 - (widget.textShowBool == false ? 15 : 0),
       width: widget.width,
@@ -92,27 +101,27 @@ class _DiamondNodeSlisderState extends State<DiamondNodeSlisder> {
             //上部tips气泡文字
             bubbleShowBool
                 ? Align(
-                    alignment: FractionalOffset(value, 0),
-                    child: Container(
-                      width: 40,
-                      height: 15,
-                      decoration: BoxDecoration(
-                        color: widget.activeTrackColor,
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(20.0),
-                        ),
-                      ),
-                      child: Text(
-                        (int.parse((widget.maxValue! * value)
-                                    .toStringAsFixed(0)) <=
-                                widget.minValue!)
-                            ? '${widget.minValue}${widget.textUnitStr}'
-                            : '${(widget.maxValue! * value).toStringAsFixed(0)}${widget.textUnitStr}',
-                        style: TextStyle(fontSize: 13, color: Colors.white),
-                        textAlign: TextAlign.center,
-                      ),
-                    ),
-                  )
+              alignment: FractionalOffset(value, 0),
+              child: Container(
+                width: 40,
+                height: 15,
+                decoration: BoxDecoration(
+                  color: widget.activeTrackColor,
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(20.0),
+                  ),
+                ),
+                child: Text(
+                  (int.parse((widget.maxValue! * value)
+                      .toStringAsFixed(0)) <=
+                      widget.minValue!)
+                      ? '${widget.minValue}${widget.textUnitStr}'
+                      : '${(widget.maxValue! * value).toStringAsFixed(0)}${widget.textUnitStr}',
+                  style: TextStyle(fontSize: 13, color: Colors.white),
+                  textAlign: TextAlign.center,
+                ),
+              ),
+            )
                 : Container(),
 
             //slider
@@ -151,8 +160,8 @@ class _DiamondNodeSlisderState extends State<DiamondNodeSlisder> {
                       maxWidth: widget.width),
                   child: Wrap(
                     spacing: (widget.width -
-                            (widget.nodeWidth + 0.15) *
-                                (widget.divisions + 1)) /
+                        (widget.nodeWidth + 0.15) *
+                            (widget.divisions + 1)) /
                         widget.divisions, //横向间距  10.15:  0.15作为误差
                     runSpacing: 0, //纵向间距
                     alignment: WrapAlignment.start,
@@ -161,8 +170,8 @@ class _DiamondNodeSlisderState extends State<DiamondNodeSlisder> {
                       double currentValue = double.parse(
                           (widget.maxValue! * value).toStringAsFixed(0));
                       double nodeValue = double.parse(
-                              (widget.maxValue! / widget.divisions)
-                                  .toString()) *
+                          (widget.maxValue! / widget.divisions)
+                              .toString()) *
                           list.indexOf(valueS);
 
                       return Transform.rotate(
@@ -225,18 +234,18 @@ class _DiamondNodeSlisderState extends State<DiamondNodeSlisder> {
             //节点文字
             widget.textShowBool
                 ? Positioned(
-                    bottom: 3,
-                    child: Container(
-                      width: widget.width,
-                      height: widget.height + 8,
-                      // decoration: BoxDecoration(color: Colors.pink[300]),
-                      child: CustomPaint(
-                        painter: SliderPainter2(
-                            widget.maxValue!, widget.minValue!,
-                            divisions: widget.divisions,
-                            textUnitStr: widget.textUnitStr),
-                      ),
-                    ))
+                bottom: 3,
+                child: Container(
+                  width: widget.width,
+                  height: widget.height + 8,
+                  // decoration: BoxDecoration(color: Colors.pink[300]),
+                  child: CustomPaint(
+                    painter: SliderPainter2(
+                        widget.maxValue!, widget.minValue!,
+                        divisions: widget.divisions,
+                        textUnitStr: widget.textUnitStr),
+                  ),
+                ))
                 : Container(),
           ],
         ),
@@ -284,13 +293,14 @@ class _DiamondNodeSlisderState extends State<DiamondNodeSlisder> {
 
     //回调滑竿值
     widget.valueChanged(
-        int.parse(((dx / maxX) * widget.maxValue!).toStringAsFixed(0))); //值 取整数
+        int.parse(((dx / maxX) * widget.maxValue!).toStringAsFixed(0)),
+        dx / maxX); //值 取整数、百分比
   }
 
   //直接跳到节点，无过渡
   void gotoNode() {
     int precent =
-        int.parse(((dx / maxX) * widget.maxValue!).toStringAsFixed(0));
+    int.parse(((dx / maxX) * widget.maxValue!).toStringAsFixed(0));
     double divisionsV = widget.maxValue! / widget.divisions;
     debugPrint('precent===$precent');
     debugPrint('divisionsV===$divisionsV');
@@ -327,10 +337,10 @@ class SliderPainter extends CustomPainter {
   final int divisions;
 
   SliderPainter(
-    this.getDx, {
-    this.activeTrackColor,
-    this.divisions = 4,
-  });
+      this.getDx, {
+        this.activeTrackColor,
+        this.divisions = 4,
+      });
 
   // 初始化画笔
   var lineP = Paint()..strokeCap = StrokeCap.butt;
@@ -392,7 +402,7 @@ class SliderPainter2 extends CustomPainter {
       );
       textPainter.text = textSpan;
       textPainter.textDirection =
-          i == divisions ? TextDirection.rtl : TextDirection.ltr;
+      i == divisions ? TextDirection.rtl : TextDirection.ltr;
       textPainter.textAlign = i == divisions ? TextAlign.end : TextAlign.center;
       textPainter.layout(maxWidth: 35);
 
@@ -400,8 +410,8 @@ class SliderPainter2 extends CustomPainter {
       double space = i == 0
           ? 0
           : (i == divisions
-              ? -textPainter.width
-              : -(textPainter.width / 2)); //textPainter.width: 文字长度
+          ? -textPainter.width
+          : -(textPainter.width / 2)); //textPainter.width: 文字长度
 
       textPainter.paint(
         canvas2,

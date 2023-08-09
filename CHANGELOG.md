@@ -1,5 +1,5 @@
-## 1.0.0
+## 1.0.1
 
-* First specification release
+* Add an initial value attribute, optionally using
 
 
