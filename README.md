@@ -120,6 +120,31 @@
 
 ```
 ## 效果
-![diamond_node_slider](https://user-images.githubusercontent.com/13375221/196411667-8b846ad9-3237-43af-b64a-0b8a53bae173.gif)|![diamond_node_slider2](https://github.com/dushiling/project_image/blob/main/diamond_node_slider/diamond_node_slider2.gif)
+![diamond_node_slider](https://user-images.githubusercontent.com/13375221/196411667-8b846ad9-3237-43af-b64a-0b8a53bae173.gif)|![diamond_node_slider2](https://upload-images.jianshu.io/upload_images/4886952-739a448eafdcc6ba.gif?imageMogr2/auto-orient/strip)
 |--|--|
+
+## 参数说明
+```
+ final double width;//长度
+ final double height;//高度
+
+ final int? maxValue;//最大值
+ final int? minValue;//最小值
+
+ final int divisions;//段数
+
+ final Color?  unActiveTrackColor;//不活跃颜色
+ final Color?  activeTrackColor;//活跃颜色
+
+ final String textUnitStr;//文字单位：%、x等
+ final bool textShowBool;//是否显示节点下的文字
+
+ final double nodeWidth;//节点宽高
+ final bool isRhombus;//true:菱形（默认） false：圆形
+ final bool toNodeBool;//滑动直接跳到节点，无过渡
+ 
+  final double? ratioValue; //百分率，范围:0-1,  初始值/ maxValue
+
+ final Function(int) valueChanged;//回调slider值
+```
 
