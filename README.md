@@ -1,7 +1,8 @@
 # diamond_node_slider
-1. The node is a diamond slider.The node can also be circular.
-2. which can achieve two effects with transition value and no transition value.
-3. bubble displays its value, and the node text can not be displayed.
+1. 该节点是菱形滑块。该节点也可以是圆形的.
+2. 可以实现有过渡值和无过渡值两种效果.
+3. 气泡显示其值，节点底部文本可选择显示或不展示.
+4. 可与其配置初始值
 
 ## 使用
 ```
@@ -119,6 +120,6 @@
 
 ```
 ## 效果
-![diamond_node_slider](https://user-images.githubusercontent.com/13375221/196411667-8b846ad9-3237-43af-b64a-0b8a53bae173.gif)|
-
+![diamond_node_slider](https://user-images.githubusercontent.com/13375221/196411667-8b846ad9-3237-43af-b64a-0b8a53bae173.gif)|![diamond_node_slider2](https://github.com/dushiling/project_image/blob/main/diamond_node_slider/diamond_node_slider2.gif)
+|--|--|
 
