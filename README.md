@@ -120,7 +120,7 @@
 
 ```
 ## 效果
-![diamond_node_slider](https://user-images.githubusercontent.com/13375221/196411667-8b846ad9-3237-43af-b64a-0b8a53bae173.gif)|![diamond_node_slider2](https://upload-images.jianshu.io/upload_images/4886952-739a448eafdcc6ba.gif?imageMogr2/auto-orient/strip)
+![diamond_node_slider](https://user-images.githubusercontent.com/13375221/196411667-8b846ad9-3237-43af-b64a-0b8a53bae173.gif)|![diamond_node_slider2](https://github.com/dushiling/project_image/blob/main/diamond_node_slider/diamond_node_slider2.gif)
 |--|--|
 
 ## 参数说明
